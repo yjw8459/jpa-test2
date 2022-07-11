@@ -12,10 +12,12 @@ public class Order {
     private Long id;
 
     //관계형 DB에 맞춘 설계
-    @Column(name = "MEMBER_ID")
-    private Long memberId;
+//    @Column(name = "MEMBER_ID")
+//    private Long memberId;
 
     //관계형 DB를 객체에 맞추는 방식
+    @ManyToOne
+    @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
     private LocalDateTime orderDate;
@@ -25,10 +27,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
     }
 
     public void setOrderDate(LocalDateTime orderDate) {
@@ -41,10 +39,6 @@ public class Order {
 
     public Long getId() {
         return id;
-    }
-
-    public Long getMemberId() {
-        return memberId;
     }
 
     public LocalDateTime getOrderDate() {
