@@ -1,6 +1,8 @@
 package book.shop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,6 +15,9 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    @OneToMany(mappedBy = "member") //연관관계의 주인은 Order이고, Order는 member와 매핑한다.
+    private List<Order> orders = new ArrayList<>(); //List에 new ArrayList<>()는 관례이다.
 
     public void setId(Long id) {
         this.id = id;

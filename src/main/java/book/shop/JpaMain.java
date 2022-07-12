@@ -1,5 +1,8 @@
 package book.shop;
 
+import book.shop.domain.Order;
+import book.shop.domain.OrderItem;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -16,6 +19,9 @@ public class JpaMain {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
         try {
+
+            Order order = new Order();
+            order.addOrderItem(new OrderItem());//연관관계 편의 메서드
             tx.commit();
         }
         catch (Exception e){
